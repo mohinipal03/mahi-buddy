@@ -2,6 +2,8 @@ import streamlit as st
 import openai
 import json
 import os
+# ✅ DEBUG LINE: Check if OpenAI key is loaded
+st.write("Secrets loaded?", "openai" in st.secrets)
 
 # Set your OpenAI API key
 openai.api_key = st.secrets["openai"]["api_key"]
