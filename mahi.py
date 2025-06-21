@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-from openai.error import RateLimitError
 import json
 import os
 
