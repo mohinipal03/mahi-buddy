@@ -4,7 +4,7 @@ import json
 import os
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = st.secrets["openai"]["api_key"]
 
 # Load memory from file
 def load_memory():
