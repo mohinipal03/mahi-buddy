@@ -52,13 +52,17 @@ Reply like a loving friend — gentle, soft, and emotionally warm.
 User: {user_input}
 Mahi:
         """
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            max_tokens=300
-        )
+       try:
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.7,
+        max_tokens=150
+    )
+    reply = response['choices'][0]['message']['content']
+    st.text_area("Mahi says:", value=reply, height=150)
 
-        reply = response['choices'][0]['message']['content']
-        st.text_area("Mahi says:", value=reply, height=150)
+except openai.error.RateLimitError:
+    st.error("Mahi is a bit tired right now 💤 (API rate limit hit). Please try again later.")
+
 
